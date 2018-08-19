@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
+import TeamCircle from '../../2-molecules/team-circle';
 
 const processCSV = (csv, key) => {
   const maxValue = d3.max(csv, obj => parseFloat(obj[key]));
@@ -47,12 +48,10 @@ class MainViz extends Component {
               onMouseOut={_handleMouseOut}
               onClick={e => onClick({ ...e, __teamName: data.team })}
             >
-              <circle
+              <TeamCircle
                 r={data.radius || '20'}
-                fill={data.color || 'pink'}
-                stroke="black"
-                strokeWidth="1px"
-                style={{ cursor: 'pointer' }}
+                color={data.color || 'pink'}
+                i={i}
               />
               <text
                 textAnchor="middle"
